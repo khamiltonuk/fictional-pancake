@@ -1,14 +1,38 @@
 import React from "react";
+import styled from "styled-components";
+
+const Title = styled.h2`
+  position: absolute;
+  text-indent: -999em;
+`;
+
+const Result = styled.li`
+  display: inline-block;
+  min-width: 70px;
+  margin: 2px;
+  color: #da727e;
+`;
+
+const Results = styled.ul`
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  top: 60px;
+  position: absolute;
+  left: 0;
+  list-style: none;
+  text-align: center;
+`;
 
 const Controls = props => {
   return (
     <div>
-      <h2 class="screenreader">Results</h2>
-      <ul class="results">
-        <li>Win: {`${props.win}`}</li>
-        <li>Draw:{`${props.draw}`}</li>
-        <li>Lose: {`${props.lose}`}</li>
-      </ul>
+      <Title>Results</Title>
+      <Results>
+        <Result>Win: {`${props.win}`}</Result>
+        <Result>Draw:{`${props.draw}`}</Result>
+        <Result>Lose: {`${props.lose}`}</Result>
+      </Results>
     </div>
   );
 };
