@@ -24,13 +24,14 @@ const Button = styled.button`
 `;
 
 const Controls = props => {
-  const makeMove = () => {
-    console.log("hello");
-  };
   return (
     <Action>
       {props.moves.map((e, i) => (
-        <Button data-q={`make-move-${e}`} key={i} onClick={() => makeMove(e)}>
+        <Button
+          data-q={`make-move-${e}`}
+          key={i}
+          onClick={() => props.makeMove(e)}
+        >
           {e}
         </Button>
       ))}

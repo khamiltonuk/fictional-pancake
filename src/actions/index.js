@@ -30,3 +30,17 @@ export const setGameMode = payload => {
     payload
   };
 };
+
+export const makeMove = payload => {
+  return {
+    type: actions.MAKE_MOVE,
+    payload
+  };
+};
+
+export const setGameLength = payload => {
+  return {
+    type: actions.SET_GAME_LENGTH,
+    payload
+  };
+};

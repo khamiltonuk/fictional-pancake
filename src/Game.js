@@ -29,7 +29,7 @@ const Game = props => {
       <button onClick={() => props.resetGame()} className="reset-icon">
         reset
       </button>
-      <Controls moves={["rock", "paper", "sissor", "spock", "lizard"]} />
+      <Controls makeMove={props.makeMove} moves={props.gameMode} />
       <Modal isOpen={props.isSettingsOpen} onRequestClose={props.hideSettings}>
         <Settings />
       </Modal>
