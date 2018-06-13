@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Modal from "react-modal";
 
 import Controls from "./components/Controls/Controls";
 import Results from "./components/Results/Results";
@@ -13,24 +14,25 @@ const Title = styled.h1`
 `;
 
 const Game = props => {
-  console.log(props);
   return (
     <div>
       <Title>Rock paper Scissors lizard spock</Title>
-      <Results win={0} draw={0} lose={0} />
+      <Results {...props.result} />
       <Hands direction="left" />
       <Hands direction="right" />
-      <button id="js-auto-play" className="auto-play-icon">
+      <button onClick={() => props.toggleAiMode()} className="auto-play-icon">
         Ai Play
       </button>
-      <button id="js-settings" className="settings-icon">
+      <button onClick={() => props.showSettings()} className="settings-icon">
         settings
       </button>
       <button onClick={() => props.resetGame()} className="reset-icon">
         reset
       </button>
       <Controls moves={["rock", "paper", "sissor", "spock", "lizard"]} />
-      <Settings />
+      <Modal isOpen={props.isSettingsOpen} onRequestClose={props.hideSettings}>
+        <Settings />
+      </Modal>
     </div>
   );
 };
