@@ -23,3 +23,10 @@ export const toggleAiMode = () => {
     type: actions.TOGGLE_AI_MODE
   };
 };
+
+export const setGameMode = payload => {
+  return {
+    type: actions.SET_GAME_MODE,
+    payload
+  };
+};
