@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Results from "./components/Results";
+import Results from "./components/Results/Results";
 import "./App.css";
-import Controls from "./components/Results";
+import Controls from "./components/Results/Results";
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -16,9 +16,9 @@ class App extends Component {
       <div>
         <Title>Rock paper Scissors lizard spock</Title>
         <Results win={0} draw={0} lose={0} />
-        <div id="left-hand" class="animated" />
-        <div id="right-hand" class="animated" />
-        <Controls />
+        <div id="left-hand" className="animated" />
+        <div id="right-hand" className="animated" />
+        <Controls moves={["rock", "paper", "sissor", "spock", "lizard"]} />
       </div>
     );
   }
