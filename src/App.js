@@ -1,18 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Results from "./components/Results";
+import "./App.css";
+import Controls from "./components/Results";
+import styled from "styled-components";
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Title>Rock paper Scissors lizard spock</Title>
+        <Results win={0} draw={0} lose={0} />
+        <div id="left-hand" class="animated" />
+        <div id="right-hand" class="animated" />
+        <Controls />
       </div>
     );
   }
