@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Controls should match the snapshot 1`] = `
+<styled.nav>
+  <styled.button
+    data-q="make-move-rock"
+    key="0"
+    onClick={[Function]}
+  >
+    rock
+  </styled.button>
+  <styled.button
+    data-q="make-move-paper"
+    key="1"
+    onClick={[Function]}
+  >
+    paper
+  </styled.button>
+  <styled.button
+    data-q="make-move-cheese"
+    key="2"
+    onClick={[Function]}
+  >
+    cheese
+  </styled.button>
+</styled.nav>
+`;

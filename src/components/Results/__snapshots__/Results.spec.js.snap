@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results should match the snapshot 1`] = `
+<div>
+  <styled.h2>
+    Results
+  </styled.h2>
+  <styled.ul>
+    <styled.li>
+      Win: 
+      0
+    </styled.li>
+    <styled.li>
+      Draw:
+      0
+    </styled.li>
+    <styled.li>
+      Lose: 
+      0
+    </styled.li>
+  </styled.ul>
+</div>
+`;
