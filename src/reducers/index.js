@@ -8,6 +8,8 @@ import {
   MAKE_MOVE
 } from "../constants";
 
+import makeMove from "../helpers/helpers";
+
 const initialState = {
   result: { win: 0, lose: 7, draw: 0 },
   isSettingsOpen: false,
@@ -16,19 +18,6 @@ const initialState = {
   gameLength: 3,
   isGameOver: false
 };
-
-// make a move
-// deside winner
-// update score
-
-function makeMove(result, move) {
-  console.log(move);
-  return {
-    win: 0,
-    lose: 0,
-    draw: 0
-  };
-}
 
 export default function(state = initialState, { type, payload }) {
   switch (type) {
