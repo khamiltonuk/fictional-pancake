@@ -18,7 +18,9 @@ const GameContainer = connect(
       isComputerPlaying: state.isComputerPlaying,
       isGameOver: state.isGameOver,
       gameMode: state.gameMode,
-      moves: state.moves
+      moves: state.moves,
+      playerOneChoice: state.playerOneChoice,
+      playerTwoChoice: state.playerTwoChoice
     };
   },
   function mapDispatchToProps(dispatch) {

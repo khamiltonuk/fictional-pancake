@@ -49,8 +49,8 @@ const Game = props => {
       <Frame>
         <Results {...props.result} />
         <Hands
-          playerOneChoice={playerOneChoice}
-          playerTwoChoice={playerTwoChoice}
+          playerOneChoice={props.playerOneChoice}
+          playerTwoChoice={props.playerTwoChoice}
         />
         <Button onClick={() => props.toggleAiMode()} className="auto-play-icon">
           Ai Play

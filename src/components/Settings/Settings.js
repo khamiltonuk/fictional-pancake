@@ -16,6 +16,11 @@ const Label = styled.label`
   cursor: pointer;
 `;
 
+const Title = styled.h2`
+  font-size: 100%;
+  font-weight: normal;
+`;
+
 const Input = styled.input`
   position: absolute;
   top: 0;
@@ -72,13 +77,13 @@ const Button = styled.button`
 `;
 
 const Settings = props => {
-  const rps = ["rock", "paper", "sissor"];
-  const rpsls = ["rock", "paper", "sissor", "spock", "lizard"];
+  const rps = ["rock", "paper", "scissor"];
+  const rpsls = ["rock", "paper", "scissor", "spock", "lizard"];
   return (
     <div id="settings-pane" className="settings">
       <form method="POST" onSubmit={() => props.hideSettings()}>
         <Fieldset>
-          <h2>Select you game mode</h2>
+          <Title>Select you game mode</Title>
           <Inputfield>
             <Input
               type="radio"
@@ -118,7 +123,7 @@ const Settings = props => {
           </Inputfield>
         </Fieldset>
         <Fieldset>
-          <h2>Select you game type</h2>
+          <Title>Select you game type</Title>
           <Inputfield>
             <Input
               type="radio"

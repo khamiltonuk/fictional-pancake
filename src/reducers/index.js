@@ -11,19 +11,15 @@ import {
 import { makeMove, isGameOver, makeChoice } from "../helpers/helpers";
 
 const initialState = {
-  result: { win: 0, lose: 7, draw: 0 },
+  result: { win: 0, lose: 0, draw: 0 },
   isSettingsOpen: false,
   isComputerPlaying: true,
-  gameMode: ["rock", "paper", "sissor", "spock", "lizard"],
+  gameMode: ["rock", "paper", "scissor", "spock", "lizard"],
   gameLength: 3,
   playerOneChoice: null,
   playerTwoChoice: null,
   isGameOver: false
 };
-
-//animate the hands
-//player decide who wins
-// update result
 
 export default function(state = initialState, { type, payload }) {
   switch (type) {
