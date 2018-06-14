@@ -1,17 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// #left-hand,
-// #right-hand {
-// 	background: url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/hands-sprite.png') transparent;
-// 	width: 312px;
-// 	position: absolute;
-//   margin-top: -67px;
-// 	height: 135px;
-//   text-indent: 100%;
-//   overflow: hidden;
-//   white-space: nowrap;
-// }
 // #left-hand {
 // 	left: 0;
 //   top: 30%;
@@ -38,15 +27,31 @@ const Hand = styled.span`
   margin-top: -67px;
   height: 135px;
   text-indent: 100%;
+  position: absolute;
   display: block;
   overflow: hidden;
   white-space: nowrap;
-  background-position: ${props =>
-    (props.direction = "left" ? "-312px -135px" : "-312px 0")};
+`;
+
+const LeftHand = Hand.extend`
+  left: 0;
+  top: 30%;
+  background-position: -312px -135px;
+`;
+
+const RightHand = Hand.extend`
+  right: 0;
+  top: 50%;
+  background-position: -312px 0;
 `;
 
 const Hands = props => {
-  return <Hand {...props} />;
+  return (
+    <div>
+      <LeftHand {...props} />
+      <RightHand {...props} />
+    </div>
+  );
 };
 
 export default Hands;

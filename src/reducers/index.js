@@ -8,7 +8,7 @@ import {
   MAKE_MOVE
 } from "../constants";
 
-import makeMove from "../helpers/helpers";
+import { makeMove, isGameOver, makeChoice } from "../helpers/helpers";
 
 const initialState = {
   result: { win: 0, lose: 7, draw: 0 },
@@ -16,13 +16,26 @@ const initialState = {
   isComputerPlaying: true,
   gameMode: ["rock", "paper", "sissor", "spock", "lizard"],
   gameLength: 3,
+  playerOneChoice: null,
+  playerTwoChoice: null,
   isGameOver: false
 };
+
+//animate the hands
+//player decide who wins
+// update result
 
 export default function(state = initialState, { type, payload }) {
   switch (type) {
     case MAKE_MOVE:
-      return { ...state, result: makeMove(state.result, payload) };
+      const randomChoice = makeChoice(state.gameMode);
+      return {
+        ...state,
+        playerOneChoice: payload,
+        playerTwoChoice: randomChoice,
+        result: makeMove(state.result, payload, randomChoice, state.gameMode),
+        isGameOver: isGameOver(state.result, state.gameLength)
+      };
     case SET_GAME_MODE:
       return { ...state, gameMode: payload };
     case SET_GAME_LENGTH:

@@ -50,12 +50,33 @@ const Fieldset = styled.fieldset`
   border: 0;
 `;
 
+const Button = styled.button`
+  text-transform: uppercase;
+  display: inline-block;
+  background: #da727e;
+  padding: 10px 20px;
+  border: none;
+  color: #000;
+  position: relative;
+  width: 100%;
+  position: static;
+  margin-bottom: 5px;
+  &:focus,
+  &:hover {
+    background: #ac6c82;
+  }
+  @media (min-width: 640px) {
+    margin: 0;
+    width: auto;
+  }
+`;
+
 const Settings = props => {
   const rps = ["rock", "paper", "sissor"];
   const rpsls = ["rock", "paper", "sissor", "spock", "lizard"];
   return (
-    <div id="settings-pane" className="settings" role="dialog">
-      <form method="POST">
+    <div id="settings-pane" className="settings">
+      <form method="POST" onSubmit={() => props.hideSettings()}>
         <Fieldset>
           <h2>Select you game mode</h2>
           <Inputfield>
@@ -124,6 +145,7 @@ const Settings = props => {
             </Label>
           </Inputfield>
         </Fieldset>
+        <Button type="submit">Done</Button>
         <Rules />
       </form>
     </div>

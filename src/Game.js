@@ -20,7 +20,7 @@ const Frame = styled.div`
   overflow: hidden;
   padding-top: 20px;
   padding-bottom: 20px;
-  @media (min-width: 640px) .center-wrap {
+  @media (min-width: 640px) {
     width: 740px;
     margin: 0 auto;
     padding-top: 20px;
@@ -48,8 +48,10 @@ const Game = props => {
       <Title>Rock paper Scissors lizard spock</Title>
       <Frame>
         <Results {...props.result} />
-        <Hands direction="left" />
-        <Hands direction="right" />
+        <Hands
+          playerOneChoice={playerOneChoice}
+          playerTwoChoice={playerTwoChoice}
+        />
         <Button onClick={() => props.toggleAiMode()} className="auto-play-icon">
           Ai Play
         </Button>
@@ -67,6 +69,7 @@ const Game = props => {
           <Settings
             setGameLength={props.setGameLength}
             setGameMode={props.setGameMode}
+            hideSettings={props.hideSettings}
           />
         </Modal>
       </Frame>
