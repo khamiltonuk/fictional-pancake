@@ -4,6 +4,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import GameContainer from "./GameContainer";
 import "./index.css";
+import "normalize.css/normalize.css";
 import registerServiceWorker from "./registerServiceWorker";
 import reducer from "./reducers";
 

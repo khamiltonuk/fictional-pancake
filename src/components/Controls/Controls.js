@@ -19,8 +19,18 @@ const Button = styled.button`
   padding: 10px 20px;
   border: none;
   color: #000;
-  margin: 0;
   position: relative;
+  width: 100%;
+  position: static;
+  margin-bottom: 5px;
+  &:focus,
+  &:hover {
+    background: #ac6c82;
+  }
+  @media (min-width: 640px) {
+    margin: 0;
+    width: auto;
+  }
 `;
 
 const Controls = props => {

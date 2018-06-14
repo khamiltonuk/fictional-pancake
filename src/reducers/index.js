@@ -26,7 +26,7 @@ export default function(state = initialState, { type, payload }) {
     case SET_GAME_MODE:
       return { ...state, gameMode: payload };
     case SET_GAME_LENGTH:
-      return { ...state, gameMode: payload };
+      return { ...state, gameLength: payload };
     case TOGGLE_AI_MODE:
       return { ...state, isComputerPlaying: !state.isComputerPlaying };
     case SHOW_SETTINGS:
