@@ -93,7 +93,7 @@ const Game = ({
           playerTwoChoice={playerTwoChoice}
         />
         <Button
-          onClick={() => makeMove(makeChoice(gameMode))}
+          onClick={() => makeMove(makeChoice(moves))}
           className="auto-play-icon"
           disabled={isGameOver === "" ? false : true}
         >

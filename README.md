@@ -3,4 +3,5 @@
 ## todo
 
 [] animate hands bouncing
-[] settings to reflect state
+[x] settings to reflect state
+[x] unlimited play
