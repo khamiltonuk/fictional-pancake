@@ -27,20 +27,24 @@ const Button = styled.button`
   &:hover {
     background: #ac6c82;
   }
+  &:disabled {
+    opacity: 0.3;
+  }
   @media (min-width: 640px) {
     margin: 0;
     width: auto;
   }
 `;
 
-const Controls = props => {
+const Controls = ({ moves, makeMove, isGameOver }) => {
   return (
     <Action>
-      {props.moves.map((e, i) => (
+      {moves.map((e, i) => (
         <Button
           data-q={`make-move-${e}`}
           key={i}
-          onClick={() => props.makeMove(e)}
+          onClick={() => makeMove(e)}
+          disabled={isGameOver === "" ? false : true}
         >
           {e}
         </Button>

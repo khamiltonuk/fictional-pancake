@@ -30,13 +30,19 @@ export default function(state = initialState, { type, payload }) {
   switch (type) {
     case MAKE_MOVE:
       const randomChoice = makeChoice(state.gameMode);
+      const newResult = makeMove(
+        state.result,
+        payload,
+        randomChoice,
+        state.gameMode
+      );
       return {
         ...state,
         playerOneChoice: payload,
         playerTwoChoice: randomChoice,
-        result: makeMove(state.result, payload, randomChoice, state.gameMode),
-        isGameOver: isGameOver(state.result, state.gameLength),
-        GameStatus: gameStatus(state.result)
+        result: newResult,
+        isGameOver: isGameOver(newResult, state.gameLength),
+        GameStatus: gameStatus(newResult)
       };
     case SET_GAME_MODE:
       return { ...state, gameMode: payload };
