@@ -30,6 +30,15 @@ const Frame = styled.div`
     padding-bottom: 20px;
   }
 `;
+const CenterWrap = styled.div`
+  @media (min-width: 640px) {
+    width: 740px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+`;
+
 const Button = styled.button`
   text-transform: uppercase;
   display: inline-block;
@@ -45,6 +54,15 @@ const Button = styled.button`
   }
   &:disabled {
     opacity: 0.3;
+  }
+`;
+
+const SecondaryButton = Button.extend`
+  background: #455c7b;
+  color: #da727e;
+  &:focus,
+  &:hover {
+    background: #2a3a50;
   }
 `;
 
@@ -79,9 +97,7 @@ const Game = ({
         >
           Ai Play
         </Button>
-        <Button onClick={() => showSettings()} className="settings-icon">
-          settings
-        </Button>
+
         <Button onClick={() => resetGame()} className="reset-icon">
           {isGameOver === "" ? "reset" : "play again"}
         </Button>
@@ -99,6 +115,14 @@ const Game = ({
           />
         </Modal>
       </Frame>
+      <CenterWrap>
+        <SecondaryButton
+          onClick={() => showSettings()}
+          className="settings-icon"
+        >
+          settings
+        </SecondaryButton>
+      </CenterWrap>
     </div>
   );
 };

@@ -77,8 +77,8 @@ const Button = styled.button`
 `;
 
 const Settings = props => {
-  const rps = ["rock", "paper", "scissor"];
-  const rpsls = ["rock", "paper", "scissor", "spock", "lizard"];
+  const rps = ["scissor", "paper", "rock"];
+  const rpsls = ["lizard", "spock", "scissor", "paper", "rock"];
   return (
     <div id="settings-pane" className="settings">
       <form method="POST" onSubmit={() => props.hideSettings()}>
