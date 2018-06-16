@@ -8,6 +8,8 @@ import Hands from "./components/Hands/Hands";
 import Settings from "./components/Settings/Settings";
 import GameStatusBar from "./components/GameStatus/GameStatus";
 
+import { makeChoice } from "./helpers/helpers";
+
 const Title = styled.h1`
   text-align: center;
   margin-top: 0;
@@ -41,13 +43,15 @@ const Button = styled.button`
   &:hover {
     background: #ac6c82;
   }
+  &:disabled {
+    opacity: 0.3;
+  }
 `;
 
 const Game = ({
   result,
   playerOneChoice,
   playerTwoChoice,
-  toggleAiMode,
   showSettings,
   resetGame,
   isGameOver,
@@ -68,14 +72,18 @@ const Game = ({
           playerOneChoice={playerOneChoice}
           playerTwoChoice={playerTwoChoice}
         />
-        <Button onClick={() => toggleAiMode()} className="auto-play-icon">
+        <Button
+          onClick={() => makeMove(makeChoice(gameMode))}
+          className="auto-play-icon"
+          disabled={isGameOver === "" ? false : true}
+        >
           Ai Play
         </Button>
         <Button onClick={() => showSettings()} className="settings-icon">
           settings
         </Button>
         <Button onClick={() => resetGame()} className="reset-icon">
-          reset
+          {isGameOver === "" ? "reset" : "play again"}
         </Button>
         <GameStatusBar isGameOver={isGameOver} GameStatus={GameStatus} />
         <Controls

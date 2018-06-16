@@ -4,7 +4,6 @@ import {
   resetGame,
   showSettings,
   hideSettings,
-  toggleAiMode,
   makeMove,
   setGameLength,
   setGameMode
@@ -15,7 +14,6 @@ const GameContainer = connect(
     return {
       result: state.result,
       isSettingsOpen: state.isSettingsOpen,
-      isComputerPlaying: state.isComputerPlaying,
       isGameOver: state.isGameOver,
       gameMode: state.gameMode,
       moves: state.moves,
@@ -29,7 +27,6 @@ const GameContainer = connect(
       resetGame: () => dispatch(resetGame()),
       showSettings: () => dispatch(showSettings()),
       hideSettings: () => dispatch(hideSettings()),
-      toggleAiMode: () => dispatch(toggleAiMode()),
       makeMove: move => dispatch(makeMove(move)),
       setGameLength: length => dispatch(setGameLength(length)),
       setGameMode: mode => dispatch(setGameMode(mode))

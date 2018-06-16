@@ -2,7 +2,6 @@ import {
   RESET_GAME,
   SHOW_SETTINGS,
   HIDE_SETTINGS,
-  TOGGLE_AI_MODE,
   SET_GAME_MODE,
   SET_GAME_LENGTH,
   MAKE_MOVE
@@ -13,7 +12,6 @@ import { makeMove, isGameOver, makeChoice } from "../helpers/helpers";
 const initialState = {
   result: { win: 0, lose: 0, draw: 0 },
   isSettingsOpen: false,
-  isComputerPlaying: true,
   gameMode: ["rock", "paper", "scissor", "spock", "lizard"],
   gameLength: 3,
   playerOneChoice: null,
@@ -48,8 +46,6 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, gameMode: payload };
     case SET_GAME_LENGTH:
       return { ...state, gameLength: payload };
-    case TOGGLE_AI_MODE:
-      return { ...state, isComputerPlaying: !state.isComputerPlaying };
     case SHOW_SETTINGS:
       return { ...state, isSettingsOpen: true };
     case HIDE_SETTINGS:
