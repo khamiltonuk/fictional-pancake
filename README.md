@@ -1,18 +1,19 @@
-# ROCK PAPER SCISSORS LIZARD SPOCK
+# Rock paper Scissors lizard spock
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ![Phaser](/src/images/gameplay.png)
 
-## todo
+## Todo
 
-[] animate hands bouncing
 [x] settings to reflect state
 [x] unlimited play
+[] animate hands bouncing
+[] serve side rendering
 
 ## Motivation
 
-based on a jquery version brought up to date with react redux architecture for fun
+based on a jquery version brought up to date with react redux architecture for fun for the purpose of learning
 https://jsfiddle.net/kristianhamilton/KLLQD/
 
 ### `npm start`
