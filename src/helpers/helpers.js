@@ -41,3 +41,11 @@ export function isGameOver(result, gameLength) {
 export function makeChoice(options) {
   return options[Math.floor(Math.random() * options.length)];
 }
+
+export function setMoves(gameMode) {
+  if (gameMode === "rpsls") {
+    return ["paper", "rock", "lizard", "spock", "scissors"];
+  } else if (gameMode === "rps") {
+    return ["scissor", "paper", "rock"];
+  }
+}

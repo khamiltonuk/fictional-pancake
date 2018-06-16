@@ -7,12 +7,13 @@ import {
   MAKE_MOVE
 } from "../constants";
 
-import { makeMove, isGameOver, makeChoice } from "../helpers/helpers";
+import { makeMove, isGameOver, makeChoice, setMoves } from "../helpers/helpers";
 
 const initialState = {
   result: { win: 0, lose: 0, draw: 0 },
   isSettingsOpen: false,
-  gameMode: ["paper", "rock", "lizard", "spock", "scissors"],
+  gameMode: "rpsls",
+  moves: ["paper", "rock", "lizard", "spock", "scissors"],
   gameLength: 3,
   playerOneChoice: null,
   playerTwoChoice: null,
@@ -20,30 +21,25 @@ const initialState = {
   GameStatus: "You won"
 };
 
-function gameStatus(result) {
-  return "you lost";
-}
-
 export default function(state = initialState, { type, payload }) {
   switch (type) {
     case MAKE_MOVE:
-      const randomChoice = makeChoice(state.gameMode);
+      const randomChoice = makeChoice(state.moves);
       const newResult = makeMove(
         state.result,
         payload,
         randomChoice,
-        state.gameMode
+        state.moves
       );
       return {
         ...state,
         playerOneChoice: payload,
         playerTwoChoice: randomChoice,
         result: newResult,
-        isGameOver: isGameOver(newResult, state.gameLength),
-        GameStatus: gameStatus(newResult)
+        isGameOver: isGameOver(newResult, state.gameLength)
       };
     case SET_GAME_MODE:
-      return { ...state, gameMode: payload };
+      return { ...state, gameMode: payload, moves: setMoves(payload) };
     case SET_GAME_LENGTH:
       return { ...state, gameLength: payload };
     case SHOW_SETTINGS:

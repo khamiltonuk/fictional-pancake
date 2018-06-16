@@ -72,9 +72,11 @@ const Game = ({
   playerTwoChoice,
   showSettings,
   resetGame,
+  gameLength,
   isGameOver,
   GameStatus,
   makeMove,
+  moves,
   gameMode,
   isSettingsOpen,
   hideSettings,
@@ -102,14 +104,12 @@ const Game = ({
           {isGameOver === "" ? "reset" : "play again"}
         </Button>
         <GameStatusBar isGameOver={isGameOver} GameStatus={GameStatus} />
-        <Controls
-          makeMove={makeMove}
-          moves={gameMode}
-          isGameOver={isGameOver}
-        />
+        <Controls makeMove={makeMove} moves={moves} isGameOver={isGameOver} />
         <Modal isOpen={isSettingsOpen} onRequestClose={hideSettings}>
           <Settings
             setGameLength={setGameLength}
+            gameMode={gameMode}
+            gameLength={gameLength}
             setGameMode={setGameMode}
             hideSettings={hideSettings}
           />

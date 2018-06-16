@@ -17,6 +17,7 @@ const GameContainer = connect(
       isGameOver: state.isGameOver,
       gameMode: state.gameMode,
       moves: state.moves,
+      gameLength: state.gameLength,
       playerOneChoice: state.playerOneChoice,
       playerTwoChoice: state.playerTwoChoice,
       GameStatus: state.GameStatus

@@ -77,8 +77,14 @@ const Button = styled.button`
 `;
 
 const Settings = props => {
-  const rps = ["scissor", "paper", "rock"];
-  const rpsls = ["paper", "rock", "lizard", "spock", "scissors"];
+  const handleGameLengthChange = changeEvent => {
+    props.setGameLength(parseInt(changeEvent.target.value, 10));
+  };
+
+  const handleGameModeChange = changeEvent => {
+    props.setGameMode(changeEvent.target.value);
+  };
+
   return (
     <div id="settings-pane" className="settings">
       <form method="POST" onSubmit={() => props.hideSettings()}>
@@ -90,8 +96,8 @@ const Settings = props => {
               name="game-mode"
               value="3"
               id="best-of-3"
-              defaultChecked
-              onClick={() => props.setGameLength(3)}
+              checked={props.gameLength === 3}
+              onChange={handleGameLengthChange}
             />
             <Label htmlFor="best-of-3">
               <FauxCheckbox />Best of 3
@@ -103,7 +109,8 @@ const Settings = props => {
               name="game-mode"
               value="5"
               id="best-of-5"
-              onClick={() => props.setGameLength(5)}
+              checked={props.gameLength === 5}
+              onChange={handleGameLengthChange}
             />
             <Label htmlFor="best-of-5">
               <FauxCheckbox />Best of 5
@@ -115,7 +122,8 @@ const Settings = props => {
               name="game-mode"
               value="0"
               id="non-stop"
-              onClick={() => props.setGameLength(null)}
+              checked={props.gameLength === 0}
+              onChange={handleGameLengthChange}
             />
             <Label htmlFor="non-stop">
               <FauxCheckbox />Non stop
@@ -130,7 +138,8 @@ const Settings = props => {
               name="game-type"
               value="rps"
               id="rps"
-              onClick={() => props.setGameMode(rps)}
+              checked={props.gameMode === "rps"}
+              onChange={handleGameModeChange}
             />
             <Label htmlFor="rps">
               <FauxCheckbox />Rock paper scissors
@@ -142,8 +151,8 @@ const Settings = props => {
               name="game-type"
               value="rpsls"
               id="rpsls"
-              defaultChecked
-              onClick={() => props.setGameMode(rpsls)}
+              checked={props.gameMode === "rpsls"}
+              onChange={handleGameModeChange}
             />
             <Label htmlFor="rpsls">
               <FauxCheckbox />Rock paper scissors lizard spock

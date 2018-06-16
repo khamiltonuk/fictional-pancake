@@ -47,9 +47,12 @@ describe("HIDE_SETTINGS", () => {
 
 describe("SET_GAME_MODE", () => {
   test("should set game Mode to the value of payload", () => {
-    const startAction = { type: "SET_GAME_MODE", payload: 9 };
-    const startState = { gameMode: 3 };
-    const expectedResult = { gameMode: 9 };
+    const startAction = { type: "SET_GAME_MODE", payload: "rpsls" };
+    const startState = { gameMode: "rps" };
+    const expectedResult = {
+      gameMode: "rpsls",
+      moves: ["paper", "rock", "lizard", "spock", "scissors"]
+    };
     expect(reducers(startState, startAction)).toEqual(expectedResult);
   });
 });
