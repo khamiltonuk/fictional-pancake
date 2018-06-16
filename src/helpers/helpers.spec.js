@@ -63,7 +63,7 @@ describe("makeMove", () => {
   });
 
   describe("when using rock, paper scissors", () => {
-    const options = ["lizard", "spock", "scissor", "paper", "rock"];
+    const options = ["paper", "rock", "lizard", "spock", "scissors"];
     test("should return a win increase if player one chooses rock and player two choose scissors", () => {
       const currentResult = { win: 0, lose: 2, draw: 0 };
       const expectedResult = { win: 1, lose: 2, draw: 0 };

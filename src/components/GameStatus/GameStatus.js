@@ -10,6 +10,8 @@ const StatusBar = styled.div`
   background: #da727e;
 `;
 
+StatusBar.displayName = "StatusBar";
+
 const GameStatus = ({ isGameOver }) => {
   if (isGameOver !== "") {
     return <StatusBar role="alert">{isGameOver}</StatusBar>;

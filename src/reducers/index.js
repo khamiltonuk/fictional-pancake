@@ -12,7 +12,7 @@ import { makeMove, isGameOver, makeChoice } from "../helpers/helpers";
 const initialState = {
   result: { win: 0, lose: 0, draw: 0 },
   isSettingsOpen: false,
-  gameMode: ["rock", "paper", "scissor", "spock", "lizard"],
+  gameMode: ["paper", "rock", "lizard", "spock", "scissors"],
   gameLength: 3,
   playerOneChoice: null,
   playerTwoChoice: null,

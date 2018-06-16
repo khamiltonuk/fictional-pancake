@@ -5,7 +5,10 @@ describe("RESET_GAME", () => {
   test("should return results all to zero 2", () => {
     const startAction = { type: "RESET_GAME" };
     const startState = { result: { win: 0, lose: 5, draw: 0 } };
-    const expectedResult = { result: { win: 0, lose: 0, draw: 0 } };
+    const expectedResult = {
+      result: { win: 0, lose: 0, draw: 0 },
+      isGameOver: ""
+    };
     expect(reducers(startState, startAction)).toEqual(expectedResult);
   });
 });
@@ -47,6 +50,15 @@ describe("SET_GAME_MODE", () => {
     const startAction = { type: "SET_GAME_MODE", payload: 9 };
     const startState = { gameMode: 3 };
     const expectedResult = { gameMode: 9 };
+    expect(reducers(startState, startAction)).toEqual(expectedResult);
+  });
+});
+
+describe("SET_GAME_LENGTH", () => {
+  test("should set game Length to the value of payload", () => {
+    const startAction = { type: "SET_GAME_LENGTH", payload: 9 };
+    const startState = { gameLength: 3 };
+    const expectedResult = { gameLength: 9 };
     expect(reducers(startState, startAction)).toEqual(expectedResult);
   });
 });
