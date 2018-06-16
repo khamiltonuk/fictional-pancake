@@ -29,10 +29,11 @@ export const makeMove = (result, choice1, choice2, options) => {
 };
 
 export function isGameOver(result, gameLength) {
-  debugger;
-  let isGameOver = false;
-  if (result.win >= gameLength || result.lose >= gameLength) {
-    isGameOver = true;
+  let isGameOver = "";
+  if (result.win >= gameLength) {
+    isGameOver = "You win";
+  } else if (result.lose >= gameLength) {
+    isGameOver = "You lose";
   }
   return isGameOver;
 }

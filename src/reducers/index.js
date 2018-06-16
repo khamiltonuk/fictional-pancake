@@ -18,8 +18,13 @@ const initialState = {
   gameLength: 3,
   playerOneChoice: null,
   playerTwoChoice: null,
-  isGameOver: false
+  isGameOver: "",
+  GameStatus: "You won"
 };
+
+function gameStatus(result) {
+  return "you lost";
+}
 
 export default function(state = initialState, { type, payload }) {
   switch (type) {
@@ -30,7 +35,8 @@ export default function(state = initialState, { type, payload }) {
         playerOneChoice: payload,
         playerTwoChoice: randomChoice,
         result: makeMove(state.result, payload, randomChoice, state.gameMode),
-        isGameOver: isGameOver(state.result, state.gameLength)
+        isGameOver: isGameOver(state.result, state.gameLength),
+        GameStatus: gameStatus(state.result)
       };
     case SET_GAME_MODE:
       return { ...state, gameMode: payload };
@@ -43,7 +49,7 @@ export default function(state = initialState, { type, payload }) {
     case HIDE_SETTINGS:
       return { ...state, isSettingsOpen: false };
     case RESET_GAME:
-      return { ...state, result: { win: 0, lose: 0, draw: 0 } };
+      return { ...state, result: { win: 0, lose: 0, draw: 0 }, isGameOver: "" };
     default:
       return state;
   }

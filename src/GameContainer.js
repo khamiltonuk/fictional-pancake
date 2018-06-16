@@ -20,7 +20,8 @@ const GameContainer = connect(
       gameMode: state.gameMode,
       moves: state.moves,
       playerOneChoice: state.playerOneChoice,
-      playerTwoChoice: state.playerTwoChoice
+      playerTwoChoice: state.playerTwoChoice,
+      GameStatus: state.GameStatus
     };
   },
   function mapDispatchToProps(dispatch) {

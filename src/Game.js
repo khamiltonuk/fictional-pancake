@@ -6,6 +6,7 @@ import Controls from "./components/Controls/Controls";
 import Results from "./components/Results/Results";
 import Hands from "./components/Hands/Hands";
 import Settings from "./components/Settings/Settings";
+import GameStatusBar from "./components/GameStatus/GameStatus";
 
 const Title = styled.h1`
   text-align: center;
@@ -42,34 +43,47 @@ const Button = styled.button`
   }
 `;
 
-const Game = props => {
+const Game = ({
+  result,
+  playerOneChoice,
+  playerTwoChoice,
+  toggleAiMode,
+  showSettings,
+  resetGame,
+  isGameOver,
+  GameStatus,
+  makeMove,
+  gameMode,
+  isSettingsOpen,
+  hideSettings,
+  setGameLength,
+  setGameMode
+}) => {
   return (
     <div>
       <Title>Rock paper Scissors lizard spock</Title>
       <Frame>
-        <Results {...props.result} />
+        <Results {...result} />
         <Hands
-          playerOneChoice={props.playerOneChoice}
-          playerTwoChoice={props.playerTwoChoice}
+          playerOneChoice={playerOneChoice}
+          playerTwoChoice={playerTwoChoice}
         />
-        <Button onClick={() => props.toggleAiMode()} className="auto-play-icon">
+        <Button onClick={() => toggleAiMode()} className="auto-play-icon">
           Ai Play
         </Button>
-        <Button onClick={() => props.showSettings()} className="settings-icon">
+        <Button onClick={() => showSettings()} className="settings-icon">
           settings
         </Button>
-        <Button onClick={() => props.resetGame()} className="reset-icon">
+        <Button onClick={() => resetGame()} className="reset-icon">
           reset
         </Button>
-        <Controls makeMove={props.makeMove} moves={props.gameMode} />
-        <Modal
-          isOpen={props.isSettingsOpen}
-          onRequestClose={props.hideSettings}
-        >
+        <GameStatusBar isGameOver={isGameOver} GameStatus={GameStatus} />
+        <Controls makeMove={makeMove} moves={gameMode} />
+        <Modal isOpen={isSettingsOpen} onRequestClose={hideSettings}>
           <Settings
-            setGameLength={props.setGameLength}
-            setGameMode={props.setGameMode}
-            hideSettings={props.hideSettings}
+            setGameLength={setGameLength}
+            setGameMode={setGameMode}
+            hideSettings={hideSettings}
           />
         </Modal>
       </Frame>
