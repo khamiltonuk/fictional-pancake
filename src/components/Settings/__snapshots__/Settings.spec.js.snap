@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Settings should match the snapshot 1`] = `
+<div
+  className="settings"
+  id="settings-pane"
+>
+  <form
+    method="POST"
+    onSubmit={[Function]}
+  >
+    <styled.fieldset>
+      <styled.h2>
+        Select you game mode
+      </styled.h2>
+      <styled.div>
+        <styled.input
+          checked={false}
+          id="best-of-3"
+          name="game-mode"
+          onChange={[Function]}
+          type="radio"
+          value="3"
+        />
+        <styled.label
+          htmlFor="best-of-3"
+        >
+          <styled.span />
+          Best of 3
+        </styled.label>
+      </styled.div>
+      <styled.div>
+        <styled.input
+          checked={false}
+          id="best-of-5"
+          name="game-mode"
+          onChange={[Function]}
+          type="radio"
+          value="5"
+        />
+        <styled.label
+          htmlFor="best-of-5"
+        >
+          <styled.span />
+          Best of 5
+        </styled.label>
+      </styled.div>
+      <styled.div>
+        <styled.input
+          checked={false}
+          id="non-stop"
+          name="game-mode"
+          onChange={[Function]}
+          type="radio"
+          value="0"
+        />
+        <styled.label
+          htmlFor="non-stop"
+        >
+          <styled.span />
+          Non stop
+        </styled.label>
+      </styled.div>
+    </styled.fieldset>
+    <styled.fieldset>
+      <styled.h2>
+        Select you game type
+      </styled.h2>
+      <styled.div>
+        <styled.input
+          checked={false}
+          id="rps"
+          name="game-type"
+          onChange={[Function]}
+          type="radio"
+          value="rps"
+        />
+        <styled.label
+          htmlFor="rps"
+        >
+          <styled.span />
+          Rock paper scissors
+        </styled.label>
+      </styled.div>
+      <styled.div>
+        <styled.input
+          checked={false}
+          id="rpsls"
+          name="game-type"
+          onChange={[Function]}
+          type="radio"
+          value="rpsls"
+        />
+        <styled.label
+          htmlFor="rpsls"
+        >
+          <styled.span />
+          Rock paper scissors lizard spock
+        </styled.label>
+      </styled.div>
+    </styled.fieldset>
+    <styled.button
+      type="submit"
+    >
+      Done
+    </styled.button>
+    <Rules />
+  </form>
+</div>
+`;

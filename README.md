@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-![Phaser](/src/images/gameplay.png)
+![Screenshot](/src/images/gameplay.png)
 
 ## Todo
 

@@ -1,4 +1,4 @@
-import { isGameOver, makeChoice, makeMove } from "./helpers";
+import { isGameOver, makeChoice, makeMove, setMoves } from "./helpers";
 
 describe("isGameOver", () => {
   test('should return "You win" if result.win equals game length', () => {
@@ -103,5 +103,21 @@ describe("makeMove", () => {
         expectedResult
       );
     });
+  });
+});
+
+describe("setMoves", () => {
+  test('should return array of moves when "rpsls" is gameMode', () => {
+    expect(setMoves("rpsls")).toEqual([
+      "paper",
+      "rock",
+      "lizard",
+      "spock",
+      "scissors"
+    ]);
+  });
+
+  test('should return array of moves when "rpsls" is gameMode', () => {
+    expect(setMoves("rps")).toEqual(["scissor", "paper", "rock"]);
   });
 });
