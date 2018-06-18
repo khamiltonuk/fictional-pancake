@@ -4,11 +4,12 @@ body {
   margin: 0;
   padding: 0;
 }
+
 body {
   background: #da727e;
   min-height: 100%;
   text-transform: uppercase;
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
 *,
