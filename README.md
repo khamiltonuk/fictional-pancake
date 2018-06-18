@@ -1,7 +1,6 @@
-# Rock paper Scissors lizard spock
+# Rock paper scissors lizard spock
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
+You can play here [https://khamiltonuk.github.io/fictional-pancake/](https://khamiltonuk.github.io/fictional-pancake/)
 ![Screenshot](/src/images/gameplay.png)
 
 ## Todo
@@ -10,11 +9,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 [x] unlimited play
 [] animate hands bouncing
 [] serve side rendering
+[] change title in helmet
+[] add translations into other languages
 
 ## Motivation
 
 based on a jquery version brought up to date with react redux architecture for fun for the purpose of learning
 https://jsfiddle.net/kristianhamilton/KLLQD/
+
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ### `npm start`
 
