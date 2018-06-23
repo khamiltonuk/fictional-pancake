@@ -1,6 +1,6 @@
 # Rock paper scissors lizard spock
 
-You can play here [https://khamiltonuk.github.io/fictional-pancake/](https://khamiltonuk.github.io/fictional-pancake/)
+You can play it here [https://khamiltonuk.github.io/fictional-pancake/](https://khamiltonuk.github.io/fictional-pancake/)
 ![Screenshot](/src/images/gameplay.png)
 
 ## Todo

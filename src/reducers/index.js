@@ -47,7 +47,13 @@ export default function(state = initialState, { type, payload }) {
     case HIDE_SETTINGS:
       return { ...state, isSettingsOpen: false };
     case RESET_GAME:
-      return { ...state, result: { win: 0, lose: 0, draw: 0 }, isGameOver: "" };
+      return {
+        ...state,
+        playerOneChoice: "rock",
+        playerTwoChoice: "rock",
+        result: { win: 0, lose: 0, draw: 0 },
+        isGameOver: ""
+      };
     default:
       return state;
   }
