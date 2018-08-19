@@ -1,13 +1,15 @@
 import reducers from "./";
-import * as actions from "../actions";
+import { initialState } from "./";
 
 describe("RESET_GAME", () => {
-  test("should return results all to zero 2", () => {
+  test("should return results all to zero and both hands show rock as default", () => {
     const startAction = { type: "RESET_GAME" };
     const startState = { result: { win: 0, lose: 5, draw: 0 } };
     const expectedResult = {
-      result: { win: 0, lose: 0, draw: 0 },
-      isGameOver: ""
+      isGameOver: "",
+      playerOneChoice: "rock",
+      playerTwoChoice: "rock",
+      result: { draw: 0, lose: 0, win: 0 }
     };
     expect(reducers(startState, startAction)).toEqual(expectedResult);
   });
@@ -62,6 +64,15 @@ describe("SET_GAME_LENGTH", () => {
     const startAction = { type: "SET_GAME_LENGTH", payload: 9 };
     const startState = { gameLength: 3 };
     const expectedResult = { gameLength: 9 };
+    expect(reducers(startState, startAction)).toEqual(expectedResult);
+  });
+});
+
+describe("UNKNOWN", () => {
+  test("should handle unknown event and return default", () => {
+    const startAction = { type: "UNKNOWN", payload: 9 };
+    const startState = initialState;
+    const expectedResult = initialState;
     expect(reducers(startState, startAction)).toEqual(expectedResult);
   });
 });

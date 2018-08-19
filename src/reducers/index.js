@@ -12,14 +12,14 @@ import { type ResultsT } from "../types";
 
 import { makeMove, isGameOver, makeChoice, setMoves } from "../helpers/helpers";
 
-const initialState = {
+export const initialState = {
   result: { win: 0, lose: 0, draw: 0 },
   isSettingsOpen: false,
   gameMode: "rpsls",
   moves: ["paper", "rock", "lizard", "spock", "scissors"],
   gameLength: 3,
-  playerOneChoice: null,
-  playerTwoChoice: null,
+  playerOneChoice: "rock",
+  playerTwoChoice: "rock",
   isGameOver: "",
   GameStatus: "You won"
 };
