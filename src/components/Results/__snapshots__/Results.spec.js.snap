@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Results should match the snapshot 1`] = `
-<div>
+<React.Fragment>
   <styled.h2>
     Results
   </styled.h2>
@@ -19,5 +19,5 @@ exports[`Results should match the snapshot 1`] = `
       0
     </styled.li>
   </styled.ul>
-</div>
+</React.Fragment>
 `;

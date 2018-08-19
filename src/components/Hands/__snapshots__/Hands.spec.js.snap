@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Hands should match the snapshot 1`] = `
-<div>
+<React.Fragment>
   <styled.span />
   <styled.span />
-</div>
+</React.Fragment>
 `;
