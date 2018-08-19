@@ -3,11 +3,13 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 
-import Controls from "./components/Controls/Controls";
-import Results from "./components/Results/Results";
-import Hands from "./components/Hands/Hands";
-import Settings from "./components/Settings/Settings";
-import GameStatusBar from "./components/GameStatus/GameStatus";
+import {
+  Controls,
+  Results,
+  Hands,
+  Settings,
+  GameStatusBar
+} from "./components";
 import { type ResultsT } from "./types";
 
 import { makeChoice } from "./helpers/helpers";
