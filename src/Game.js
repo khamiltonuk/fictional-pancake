@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
@@ -7,6 +8,7 @@ import Results from "./components/Results/Results";
 import Hands from "./components/Hands/Hands";
 import Settings from "./components/Settings/Settings";
 import GameStatusBar from "./components/GameStatus/GameStatus";
+import { type ResultsT } from "./types";
 
 import { makeChoice } from "./helpers/helpers";
 
@@ -66,6 +68,24 @@ const SecondaryButton = Button.extend`
   }
 `;
 
+type PropsT = {
+  result: ResultsT,
+  playerOneChoice: () => void,
+  playerTwoChoice: () => void,
+  showSettings: () => void,
+  resetGame: () => void,
+  gameLength: number,
+  isGameOver: string,
+  GameStatus: string,
+  makeMove: string => void,
+  moves: Array<string>,
+  gameMode: string,
+  isSettingsOpen: boolean,
+  hideSettings: () => void,
+  setGameLength: () => void,
+  setGameMode: () => void
+};
+
 const Game = ({
   result,
   playerOneChoice,
@@ -82,7 +102,7 @@ const Game = ({
   hideSettings,
   setGameLength,
   setGameMode
-}) => {
+}: PropsT) => {
   return (
     <div>
       <Title>Rock paper Scissors lizard spock</Title>

@@ -1,3 +1,4 @@
+//@flow
 import React from "react";
 
 import Rules from "./Rules";
@@ -76,18 +77,32 @@ const Button = styled.button`
   }
 `;
 
-const Settings = props => {
+type PropsT = {
+  gameMode: string,
+  gameLength: number,
+  hideSettings: () => void,
+  setGameMode: string => void,
+  setGameLength: number => void
+};
+
+const Settings = ({
+  gameMode,
+  gameLength,
+  setGameMode,
+  setGameLength,
+  hideSettings
+}: PropsT) => {
   const handleGameLengthChange = changeEvent => {
-    props.setGameLength(parseInt(changeEvent.target.value, 10));
+    setGameLength(parseInt(changeEvent.target.value, 10));
   };
 
   const handleGameModeChange = changeEvent => {
-    props.setGameMode(changeEvent.target.value);
+    setGameMode(changeEvent.target.value);
   };
 
   return (
     <div id="settings-pane" className="settings">
-      <form method="POST" onSubmit={() => props.hideSettings()}>
+      <form method="POST" onSubmit={() => hideSettings()}>
         <Fieldset>
           <Title>Select you game mode</Title>
           <Inputfield>
@@ -96,11 +111,12 @@ const Settings = props => {
               name="game-mode"
               value="3"
               id="best-of-3"
-              checked={props.gameLength === 3}
+              checked={gameLength === 3}
               onChange={handleGameLengthChange}
             />
             <Label htmlFor="best-of-3">
-              <FauxCheckbox />Best of 3
+              <FauxCheckbox />
+              Best of 3
             </Label>
           </Inputfield>
           <Inputfield>
@@ -109,11 +125,12 @@ const Settings = props => {
               name="game-mode"
               value="5"
               id="best-of-5"
-              checked={props.gameLength === 5}
+              checked={gameLength === 5}
               onChange={handleGameLengthChange}
             />
             <Label htmlFor="best-of-5">
-              <FauxCheckbox />Best of 5
+              <FauxCheckbox />
+              Best of 5
             </Label>
           </Inputfield>
           <Inputfield>
@@ -122,11 +139,12 @@ const Settings = props => {
               name="game-mode"
               value="0"
               id="non-stop"
-              checked={props.gameLength === 0}
+              checked={gameLength === 0}
               onChange={handleGameLengthChange}
             />
             <Label htmlFor="non-stop">
-              <FauxCheckbox />Non stop
+              <FauxCheckbox />
+              Non stop
             </Label>
           </Inputfield>
         </Fieldset>
@@ -138,11 +156,12 @@ const Settings = props => {
               name="game-type"
               value="rps"
               id="rps"
-              checked={props.gameMode === "rps"}
+              checked={gameMode === "rps"}
               onChange={handleGameModeChange}
             />
             <Label htmlFor="rps">
-              <FauxCheckbox />Rock paper scissors
+              <FauxCheckbox />
+              Rock paper scissors
             </Label>
           </Inputfield>
           <Inputfield>
@@ -151,11 +170,12 @@ const Settings = props => {
               name="game-type"
               value="rpsls"
               id="rpsls"
-              checked={props.gameMode === "rpsls"}
+              checked={gameMode === "rpsls"}
               onChange={handleGameModeChange}
             />
             <Label htmlFor="rpsls">
-              <FauxCheckbox />Rock paper scissors lizard spock
+              <FauxCheckbox />
+              Rock paper scissors lizard spock
             </Label>
           </Inputfield>
         </Fieldset>

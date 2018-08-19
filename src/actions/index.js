@@ -1,3 +1,4 @@
+// @flow
 import * as actions from "../constants";
 
 export const resetGame = () => {
@@ -18,21 +19,21 @@ export const hideSettings = () => {
   };
 };
 
-export const setGameMode = payload => {
+export const setGameMode = (payload: string) => {
   return {
     type: actions.SET_GAME_MODE,
     payload
   };
 };
 
-export const makeMove = payload => {
+export const makeMove = (payload: string) => {
   return {
     type: actions.MAKE_MOVE,
     payload
   };
 };
 
-export const setGameLength = payload => {
+export const setGameLength = (payload: string) => {
   return {
     type: actions.SET_GAME_LENGTH,
     payload

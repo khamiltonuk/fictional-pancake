@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
 
@@ -36,7 +37,13 @@ const Button = styled.button`
   }
 `;
 
-const Controls = ({ moves, makeMove, isGameOver }) => {
+type PropsT = {
+  moves: Array<string>,
+  makeMove: string => void,
+  isGameOver: string
+};
+
+const Controls = ({ moves, makeMove, isGameOver }: PropsT) => {
   return (
     <Action>
       {moves.map((e, i) => (

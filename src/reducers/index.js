@@ -1,3 +1,5 @@
+// @flow
+
 import {
   RESET_GAME,
   SHOW_SETTINGS,
@@ -6,6 +8,7 @@ import {
   SET_GAME_LENGTH,
   MAKE_MOVE
 } from "../constants";
+import { type ResultsT } from "../types";
 
 import { makeMove, isGameOver, makeChoice, setMoves } from "../helpers/helpers";
 
@@ -21,7 +24,29 @@ const initialState = {
   GameStatus: "You won"
 };
 
-export default function(state = initialState, { type, payload }) {
+type PayloadT = {};
+
+type StateT = {
+  result: ResultsT,
+  isSettingsOpen: boolean,
+  gameMode: string,
+  moves: Array<string>,
+  gameLength: number,
+  playerOneChoice: null,
+  playerTwoChoice: null,
+  isGameOver: string,
+  GameStatus: string
+};
+
+type ActionT = {
+  type: string,
+  payload: string
+};
+
+export default function(
+  state: StateT = initialState,
+  { type, payload }: ActionT
+) {
   switch (type) {
     case MAKE_MOVE:
       const randomChoice = makeChoice(state.moves);

@@ -1,5 +1,7 @@
+// @flow
 import React from "react";
 import styled from "styled-components";
+import { type ResultsT } from "../../types";
 
 const Title = styled.h2`
   position: absolute;
@@ -24,14 +26,17 @@ const Results = styled.ul`
   text-align: center;
 `;
 
-const Controls = props => {
+const Controls = ({ win, draw, lose }: ResultsT) => {
   return (
     <div>
       <Title>Results</Title>
       <Results>
-        <Result>Win: {`${props.win}`}</Result>
-        <Result>Draw:{`${props.draw}`}</Result>
-        <Result>Lose: {`${props.lose}`}</Result>
+        <Result>Win: {`${win}`}</Result>
+        <Result>
+          Draw:
+          {`${draw}`}
+        </Result>
+        <Result>Lose: {`${lose}`}</Result>
       </Results>
     </div>
   );

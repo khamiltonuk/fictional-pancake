@@ -1,4 +1,5 @@
-import React from "react";
+// @flow
+import React, { Fragment } from "react";
 import styled from "styled-components";
 
 const Title = styled.h2`
@@ -8,7 +9,7 @@ const Title = styled.h2`
 
 const Rules = () => {
   return (
-    <div>
+    <Fragment>
       <Title>Rules</Title>
       <p>
         "It's very simple. Scissors cuts paper, paper covers rock, rock crushes
@@ -16,7 +17,7 @@ const Rules = () => {
         decapitates lizard, lizard eats paper, paper disproves Spock, Spock
         vaporizes rock, and as it always has rock crushes scissors"
       </p>
-    </div>
+    </Fragment>
   );
 };
 

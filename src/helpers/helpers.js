@@ -1,4 +1,12 @@
-export const makeMove = (result, choice1, choice2, options) => {
+// @flow
+import { type ResultsT } from "../types";
+
+export const makeMove = (
+  result: ResultsT,
+  choice1: string,
+  choice2: string,
+  options: Array<string>
+) => {
   const index1 = options.indexOf(choice1);
   const index2 = options.indexOf(choice2);
   let dif = index2 - index1;
@@ -28,7 +36,7 @@ export const makeMove = (result, choice1, choice2, options) => {
   };
 };
 
-export function isGameOver(result, gameLength) {
+export function isGameOver(result: ResultsT, gameLength: number) {
   if (result.win >= gameLength && gameLength !== 0) {
     return "You win";
   } else if (result.lose >= gameLength && gameLength !== 0) {
@@ -38,11 +46,11 @@ export function isGameOver(result, gameLength) {
   }
 }
 
-export function makeChoice(options) {
+export function makeChoice(options: Array<string>): string {
   return options[Math.floor(Math.random() * options.length)];
 }
 
-export function setMoves(gameMode) {
+export function setMoves(gameMode: string) {
   if (gameMode === "rpsls") {
     return ["paper", "rock", "lizard", "spock", "scissors"];
   } else if (gameMode === "rps") {
