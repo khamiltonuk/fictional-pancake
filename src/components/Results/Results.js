@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import { type ResultsT } from "../../types";
 
@@ -28,7 +28,7 @@ const Results = styled.ul`
 
 const Controls = ({ win, draw, lose }: ResultsT) => {
   return (
-    <div>
+    <Fragment>
       <Title>Results</Title>
       <Results>
         <Result>Win: {`${win}`}</Result>
@@ -38,7 +38,7 @@ const Controls = ({ win, draw, lose }: ResultsT) => {
         </Result>
         <Result>Lose: {`${lose}`}</Result>
       </Results>
-    </div>
+    </Fragment>
   );
 };
 

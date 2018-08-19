@@ -1,5 +1,5 @@
 // @flow
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 
@@ -104,7 +104,7 @@ const Game = ({
   setGameMode
 }: PropsT) => {
   return (
-    <div>
+    <Fragment>
       <Title>Rock paper Scissors lizard spock</Title>
       <Frame>
         <Results {...result} />
@@ -143,7 +143,7 @@ const Game = ({
           settings
         </SecondaryButton>
       </CenterWrap>
-    </div>
+    </Fragment>
   );
 };
 

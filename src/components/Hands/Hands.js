@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
 
 const Hand = styled.span`
@@ -62,10 +62,10 @@ const RightHand = Hand.extend`
 
 const Hands = props => {
   return (
-    <div>
+    <Fragment>
       <LeftHand {...props}>{props.playerOneChoice}</LeftHand>
       <RightHand {...props}>{props.playerTwoChoice}</RightHand>
-    </div>
+    </Fragment>
   );
 };
 
