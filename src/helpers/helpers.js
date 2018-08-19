@@ -6,7 +6,7 @@ export const makeMove = (
   choice1: string,
   choice2: string,
   options: Array<string>
-) => {
+): ResultsT => {
   const index1 = options.indexOf(choice1);
   const index2 = options.indexOf(choice2);
   let dif = index2 - index1;
@@ -36,10 +36,14 @@ export const makeMove = (
   };
 };
 
-export function isGameOver(result: ResultsT, gameLength: number) {
-  if (result.win >= gameLength && gameLength !== 0) {
+export function isGameOver(
+  { win, lose }: ResultsT,
+  gameLength: string
+): string {
+  const winningScore = parseInt(gameLength, 10);
+  if (win >= winningScore && winningScore !== 0) {
     return "You win";
-  } else if (result.lose >= gameLength && gameLength !== 0) {
+  } else if (lose >= winningScore && winningScore !== 0) {
     return "You lose";
   } else {
     return "";
@@ -50,10 +54,9 @@ export function makeChoice(options: Array<string>): string {
   return options[Math.floor(Math.random() * options.length)];
 }
 
-export function setMoves(gameMode: string) {
+export function setMoves(gameMode: string): Array<string> {
   if (gameMode === "rpsls") {
     return ["paper", "rock", "lizard", "spock", "scissors"];
-  } else if (gameMode === "rps") {
-    return ["scissor", "paper", "rock"];
   }
+  return ["scissor", "paper", "rock"];
 }

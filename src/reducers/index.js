@@ -17,7 +17,7 @@ export const initialState = {
   isSettingsOpen: false,
   gameMode: "rpsls",
   moves: ["paper", "rock", "lizard", "spock", "scissors"],
-  gameLength: 3,
+  gameLength: "3",
   playerOneChoice: "rock",
   playerTwoChoice: "rock",
   isGameOver: "",
@@ -31,9 +31,9 @@ type StateT = {
   isSettingsOpen: boolean,
   gameMode: string,
   moves: Array<string>,
-  gameLength: number,
-  playerOneChoice: null,
-  playerTwoChoice: null,
+  gameLength: string,
+  playerOneChoice: string,
+  playerTwoChoice: string,
   isGameOver: string,
   GameStatus: string
 };
@@ -46,7 +46,7 @@ type ActionT = {
 export default function(
   state: StateT = initialState,
   { type, payload }: ActionT
-) {
+): StateT {
   switch (type) {
     case MAKE_MOVE:
       const randomChoice = makeChoice(state.moves);
