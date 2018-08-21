@@ -116,13 +116,12 @@ const Game = ({
         />
         <Button
           onClick={() => makeMove(makeChoice(moves))}
-          className="auto-play-icon"
           disabled={isGameOver === "" ? false : true}
         >
           Ai Play
         </Button>
 
-        <Button onClick={() => resetGame()} className="reset-icon">
+        <Button onClick={() => resetGame()}>
           {isGameOver === "" ? "reset" : "play again"}
         </Button>
         <GameStatusBar isGameOver={isGameOver} GameStatus={GameStatus} />
@@ -138,10 +137,7 @@ const Game = ({
         </Modal>
       </Frame>
       <CenterWrap>
-        <SecondaryButton
-          onClick={() => showSettings()}
-          className="settings-icon"
-        >
+        <SecondaryButton onClick={() => showSettings()}>
           settings
         </SecondaryButton>
       </CenterWrap>

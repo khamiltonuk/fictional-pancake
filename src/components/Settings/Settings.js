@@ -93,7 +93,7 @@ const Settings = ({
   hideSettings
 }: PropsT) => {
   const handleGameLengthChange = changeEvent => {
-    setGameLength(parseInt(changeEvent.target.value, 10));
+    setGameLength(changeEvent.target.value);
   };
 
   const handleGameModeChange = changeEvent => {
@@ -111,7 +111,7 @@ const Settings = ({
               name="game-mode"
               value="3"
               id="best-of-3"
-              checked={gameLength === 3}
+              checked={gameLength === "3"}
               onChange={handleGameLengthChange}
             />
             <Label htmlFor="best-of-3">
@@ -125,7 +125,7 @@ const Settings = ({
               name="game-mode"
               value="5"
               id="best-of-5"
-              checked={gameLength === 5}
+              checked={gameLength === "5"}
               onChange={handleGameLengthChange}
             />
             <Label htmlFor="best-of-5">
@@ -139,7 +139,7 @@ const Settings = ({
               name="game-mode"
               value="0"
               id="non-stop"
-              checked={gameLength === 0}
+              checked={gameLength === "0"}
               onChange={handleGameLengthChange}
             />
             <Label htmlFor="non-stop">

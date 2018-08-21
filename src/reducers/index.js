@@ -24,8 +24,6 @@ export const initialState = {
   GameStatus: "You won"
 };
 
-type PayloadT = {};
-
 type StateT = {
   result: ResultsT,
   isSettingsOpen: boolean,
