@@ -6,7 +6,8 @@ import {
   HIDE_SETTINGS,
   SET_GAME_MODE,
   SET_GAME_LENGTH,
-  MAKE_MOVE
+  MAKE_MOVE,
+  ANIMATE_HANDS
 } from "../constants";
 import { type ResultsT } from "../types";
 
@@ -69,6 +70,12 @@ export default function(
       return { ...state, isSettingsOpen: true };
     case HIDE_SETTINGS:
       return { ...state, isSettingsOpen: false };
+    case ANIMATE_HANDS:
+      return {
+        ...state,
+        playerOneChoice: "animate",
+        playerTwoChoice: "animate"
+      };
     case RESET_GAME:
       return {
         ...state,

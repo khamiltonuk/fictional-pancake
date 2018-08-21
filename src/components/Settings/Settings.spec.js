@@ -16,13 +16,13 @@ describe("Settings", () => {
       };
       const wrapper = shallow(<Settings {...props} />);
       const button = wrapper.find("#best-of-3");
-      button.simulate("change", { target: { value: 3 } });
-      expect(props.setGameLength).toHaveBeenCalledWith(3);
+      button.simulate("change", { target: { value: "3" } });
+      expect(props.setGameLength).toHaveBeenCalledWith("3");
     });
 
     test("should have correct GameLength radio input if 3 selected", () => {
       const props = {
-        gameLength: 3
+        gameLength: "3"
       };
       const wrapper = shallow(<Settings {...props} />);
       const bestOfThreeInput = wrapper.find("#best-of-3");
@@ -35,7 +35,7 @@ describe("Settings", () => {
 
     test("should have correct GameLength radio input if 5 selected", () => {
       const props = {
-        gameLength: 5
+        gameLength: "5"
       };
       const wrapper = shallow(<Settings {...props} />);
       const bestOfThreeInput = wrapper.find("#best-of-3");

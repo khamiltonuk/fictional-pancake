@@ -6,6 +6,7 @@ import {
   showSettings,
   hideSettings,
   makeMove,
+  animateHands,
   setGameLength,
   setGameMode
 } from "./actions";
@@ -29,7 +30,12 @@ const GameContainer = connect(
       resetGame: () => dispatch(resetGame()),
       showSettings: () => dispatch(showSettings()),
       hideSettings: () => dispatch(hideSettings()),
-      makeMove: move => dispatch(makeMove(move)),
+      makeMove: move => {
+        dispatch(animateHands());
+        setTimeout(() => {
+          dispatch(makeMove(move));
+        }, 1000);
+      },
       setGameLength: length => dispatch(setGameLength(length)),
       setGameMode: mode => dispatch(setGameMode(mode))
     };

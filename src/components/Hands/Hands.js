@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Hand = styled.span`
   background: url("https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/hands-sprite.png")
@@ -12,11 +12,17 @@ const Hand = styled.span`
   display: block;
   overflow: hidden;
   white-space: nowrap;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  transform-origin: center bottom;
 `;
 
 const LeftHand = Hand.extend`
   left: 0;
   top: 30%;
+  animation-name: ${props => {
+    return props.playerTwoChoice === "animate" ? `${leftBounce}` : null;
+  }};
   background-image: ${props => {
     if (props.playerOneChoice === "spock") {
       return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/spock.jpg')";
@@ -40,6 +46,9 @@ const LeftHand = Hand.extend`
 const RightHand = Hand.extend`
   right: 0;
   top: 50%;
+  animation-name: ${props => {
+    return props.playerTwoChoice === "animate" ? `${rightBounce}` : null;
+  }};
   background-image: ${props => {
     if (props.playerTwoChoice === "spock") {
       return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/spock.jpg')";
@@ -59,6 +68,29 @@ const RightHand = Hand.extend`
     }
   }};
 `;
+
+const rightBounce = keyframes`
+0%, 20%, 53%, 80%, 100% {
+  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transform: translate3d(0,0,0);
+}
+
+40%, 43%, 70%, 90%   {
+  transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+  transform: translate3d(30px, -30px, 0) rotate(30deg);
+}
+  
+`;
+const leftBounce = keyframes`
+0%, 20%, 53%, 80%, 100% {
+  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transform: translate3d(0,0,0);
+}
+
+40%, 43%, 70%, 90%   {
+  transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+  transform: translate3d(-30px, -30px, 0) rotate(-30deg);
+}`;
 
 const Hands = props => {
   return (

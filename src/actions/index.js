@@ -39,3 +39,9 @@ export const setGameLength = (payload: string) => {
     payload
   };
 };
+
+export const animateHands = () => {
+  return {
+    type: actions.ANIMATE_HANDS
+  };
+};
