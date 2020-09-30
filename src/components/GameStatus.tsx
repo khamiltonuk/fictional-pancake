@@ -12,12 +12,14 @@ const StatusBar = styled.div`
 
 StatusBar.displayName = "StatusBar";
 
-const GameStatus = ({ isGameOver }) => {
+type ApiPropsT = {
+  isGameOver: string;
+};
+
+export const GameStatus = ({ isGameOver }: ApiPropsT) => {
   if (isGameOver !== "") {
     return <StatusBar role="alert">{isGameOver}</StatusBar>;
   } else {
     return null;
   }
 };
-
-export default GameStatus;

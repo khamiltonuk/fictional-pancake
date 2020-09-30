@@ -1,18 +1,21 @@
-// @flow
-import React, { Fragment } from "react";
+import React, { Dispatch } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 
+import { Results } from "./components/Results";
+import { Controls, Hands, Settings, GameStatus } from "./components";
 import {
-  Controls,
-  Results,
-  Hands,
-  Settings,
-  GameStatusBar
-} from "./components";
-import { type ResultsT } from "./types";
+  showSettings,
+  resetGame,
+  hideSettings,
+  setGameLength,
+  makeMove,
+  setGameMode,
+} from "./actions";
+import type { StateT } from "./reducers";
 
-import { makeChoice } from "./helpers/helpers";
+import { makeChoice } from "./helpers";
+import { ActionT } from "./actions";
 
 const Title = styled.h1`
   text-align: center;
@@ -61,7 +64,7 @@ const Button = styled.button`
   }
 `;
 
-const SecondaryButton = Button.extend`
+const SecondaryButton = styled(Button)`
   background: #455c7b;
   color: #da727e;
   &:focus,
@@ -70,43 +73,24 @@ const SecondaryButton = Button.extend`
   }
 `;
 
-type PropsT = {
-  result: ResultsT,
-  playerOneChoice: () => void,
-  playerTwoChoice: () => void,
-  showSettings: () => void,
-  resetGame: () => void,
-  gameLength: number,
-  isGameOver: string,
-  GameStatus: string,
-  makeMove: string => void,
-  moves: Array<string>,
-  gameMode: string,
-  isSettingsOpen: boolean,
-  hideSettings: () => void,
-  setGameLength: () => void,
-  setGameMode: () => void
+type ApiPropsT = {
+  store: StateT;
+  dispatch: Dispatch<ActionT>;
 };
 
-const Game = ({
-  result,
-  playerOneChoice,
-  playerTwoChoice,
-  showSettings,
-  resetGame,
-  gameLength,
-  isGameOver,
-  GameStatus,
-  makeMove,
-  moves,
-  gameMode,
-  isSettingsOpen,
-  hideSettings,
-  setGameLength,
-  setGameMode
-}: PropsT) => {
+const Game = ({ store, dispatch }: ApiPropsT) => {
+  const {
+    playerOneChoice,
+    playerTwoChoice,
+    isGameOver,
+    moves,
+    result,
+    isSettingsOpen,
+    gameMode,
+    gameLength,
+  } = store;
   return (
-    <Fragment>
+    <>
       <Title>Rock paper Scissors lizard spock</Title>
       <Frame>
         <Results {...result} />
@@ -115,33 +99,40 @@ const Game = ({
           playerTwoChoice={playerTwoChoice}
         />
         <Button
-          onClick={() => makeMove(makeChoice(moves))}
+          onClick={() => dispatch(makeMove(makeChoice(moves)))}
           disabled={isGameOver === "" ? false : true}
         >
           Ai Play
         </Button>
 
-        <Button onClick={() => resetGame()}>
+        <Button onClick={() => dispatch(resetGame())}>
           {isGameOver === "" ? "reset" : "play again"}
         </Button>
-        <GameStatusBar isGameOver={isGameOver} GameStatus={GameStatus} />
-        <Controls makeMove={makeMove} moves={moves} isGameOver={isGameOver} />
-        <Modal isOpen={isSettingsOpen} onRequestClose={hideSettings}>
+        <GameStatus isGameOver={isGameOver} />
+        <Controls
+          makeMove={(move) => dispatch(makeMove(move))}
+          moves={moves}
+          isGameOver={isGameOver}
+        />
+        <Modal
+          isOpen={isSettingsOpen}
+          onRequestClose={() => dispatch(hideSettings())}
+        >
           <Settings
-            setGameLength={setGameLength}
+            setGameLength={(length) => dispatch(setGameLength(length))}
             gameMode={gameMode}
             gameLength={gameLength}
-            setGameMode={setGameMode}
-            hideSettings={hideSettings}
+            setGameMode={(mode) => dispatch(setGameMode(mode))}
+            hideSettings={() => dispatch(hideSettings())}
           />
         </Modal>
       </Frame>
       <CenterWrap>
-        <SecondaryButton onClick={() => showSettings()}>
+        <SecondaryButton onClick={() => dispatch(showSettings())}>
           settings
         </SecondaryButton>
       </CenterWrap>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,5 +1,3 @@
-// @flow
-
 import {
   RESET_GAME,
   SHOW_SETTINGS,
@@ -7,13 +5,14 @@ import {
   SET_GAME_MODE,
   SET_GAME_LENGTH,
   MAKE_MOVE,
-  ANIMATE_HANDS
-} from "../constants";
-import { type ResultsT } from "../types";
+  ANIMATE_HANDS,
+} from "../actions";
+import type { ResultsT } from "../types";
+import type { ActionT } from "../actions";
 
-import { makeMove, isGameOver, makeChoice, setMoves } from "../helpers/helpers";
+import { makeMove, isGameOver, makeChoice, setMoves } from "../helpers";
 
-export const initialState = {
+export const initialState: StateT = {
   result: { win: 0, lose: 0, draw: 0 },
   isSettingsOpen: false,
   gameMode: "rpsls",
@@ -22,50 +21,44 @@ export const initialState = {
   playerOneChoice: "rock",
   playerTwoChoice: "rock",
   isGameOver: "",
-  GameStatus: "You won"
 };
 
-type StateT = {
-  result: ResultsT,
-  isSettingsOpen: boolean,
-  gameMode: string,
-  moves: Array<string>,
-  gameLength: string,
-  playerOneChoice: string,
-  playerTwoChoice: string,
-  isGameOver: string,
-  GameStatus: string
+export type StateT = {
+  result: ResultsT;
+  isSettingsOpen: boolean;
+  gameMode: "rpsls" | "rps";
+  moves: string[];
+  gameLength: string;
+  playerOneChoice: string;
+  playerTwoChoice: string;
+  isGameOver: string;
 };
 
-type ActionT = {
-  type: string,
-  payload: string
-};
-
-export default function(
-  state: StateT = initialState,
-  { type, payload }: ActionT
-): StateT {
-  switch (type) {
+export default function (state: StateT, action: ActionT): StateT {
+  switch (action.type) {
     case MAKE_MOVE:
       const randomChoice = makeChoice(state.moves);
       const newResult = makeMove(
         state.result,
-        payload,
+        action.payload,
         randomChoice,
         state.moves
       );
       return {
         ...state,
-        playerOneChoice: payload,
+        playerOneChoice: action.payload,
         playerTwoChoice: randomChoice,
         result: newResult,
-        isGameOver: isGameOver(newResult, state.gameLength)
+        isGameOver: isGameOver(newResult, state.gameLength),
       };
     case SET_GAME_MODE:
-      return { ...state, gameMode: payload, moves: setMoves(payload) };
+      return {
+        ...state,
+        gameMode: action.payload,
+        moves: setMoves(action.payload),
+      };
     case SET_GAME_LENGTH:
-      return { ...state, gameLength: payload };
+      return { ...state, gameLength: action.payload };
     case SHOW_SETTINGS:
       return { ...state, isSettingsOpen: true };
     case HIDE_SETTINGS:
@@ -74,7 +67,7 @@ export default function(
       return {
         ...state,
         playerOneChoice: "animate",
-        playerTwoChoice: "animate"
+        playerTwoChoice: "animate",
       };
     case RESET_GAME:
       return {
@@ -82,7 +75,7 @@ export default function(
         playerOneChoice: "rock",
         playerTwoChoice: "rock",
         result: { win: 0, lose: 0, draw: 0 },
-        isGameOver: ""
+        isGameOver: "",
       };
     default:
       return state;

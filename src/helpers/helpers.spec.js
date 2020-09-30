@@ -1,4 +1,4 @@
-import { isGameOver, makeChoice, makeMove, setMoves } from "./helpers";
+import { isGameOver, makeChoice, makeMove, setMoves } from ".";
 
 describe("isGameOver", () => {
   test('should return "You win" if result.win equals game length', () => {
@@ -113,7 +113,7 @@ describe("setMoves", () => {
       "rock",
       "lizard",
       "spock",
-      "scissors"
+      "scissors",
     ]);
   });
 

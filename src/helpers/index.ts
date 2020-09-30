@@ -1,12 +1,11 @@
-// @flow
-import { type ResultsT } from "../types";
+import type { ResultsT } from "../types";
 
 export const makeMove = (
   result: ResultsT,
   choice1: string,
   choice2: string,
-  options: Array<string>
-): ResultsT => {
+  options: string[]
+) => {
   const index1 = options.indexOf(choice1);
   const index2 = options.indexOf(choice2);
   let dif = index2 - index1;
@@ -32,7 +31,7 @@ export const makeMove = (
   return {
     win: wins,
     lose: loses,
-    draw: draws
+    draw: draws,
   };
 };
 
@@ -50,11 +49,11 @@ export function isGameOver(
   }
 }
 
-export function makeChoice(options: Array<string>): string {
+export function makeChoice(options: string[]): string {
   return options[Math.floor(Math.random() * options.length)];
 }
 
-export function setMoves(gameMode: string): Array<string> {
+export function setMoves(gameMode: string): string[] {
   if (gameMode === "rpsls") {
     return ["paper", "rock", "lizard", "spock", "scissors"];
   }

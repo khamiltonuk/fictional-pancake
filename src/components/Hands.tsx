@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const Hand = styled.span`
@@ -17,25 +17,25 @@ const Hand = styled.span`
   transform-origin: center bottom;
 `;
 
-const LeftHand = Hand.extend`
+const LeftHand = styled(Hand)<ApiPropsT>`
   left: 0;
   top: 30%;
-  animation-name: ${props => {
-    return props.playerTwoChoice === "animate" ? `${leftBounce}` : null;
+  animation-name: ${({ playerTwoChoice }) => {
+    return playerTwoChoice === "animate" ? `${leftBounce}` : "none";
   }};
-  background-image: ${props => {
-    if (props.playerOneChoice === "spock") {
+  background-image: ${({ playerOneChoice }) => {
+    if (playerOneChoice === "spock") {
       return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/spock.jpg')";
-    } else if (props.playerOneChoice === "lizard") {
+    } else if (playerOneChoice === "lizard") {
       return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/lizard.jpg')";
     } else {
       return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/hands-sprite.png')";
     }
   }};
-  background-position: ${props => {
-    if (props.playerOneChoice === "scissor") {
+  background-position: ${({ playerOneChoice }) => {
+    if (playerOneChoice === "scissor") {
       return "0 0";
-    } else if (props.playerOneChoice === "paper") {
+    } else if (playerOneChoice === "paper") {
       return "0 -135px;";
     } else {
       return "-312px -135px;";
@@ -43,13 +43,13 @@ const LeftHand = Hand.extend`
   }};
 `;
 
-const RightHand = Hand.extend`
+const RightHand = styled(Hand)<ApiPropsT>`
   right: 0;
   top: 50%;
-  animation-name: ${props => {
+  animation-name: ${(props) => {
     return props.playerTwoChoice === "animate" ? `${rightBounce}` : null;
   }};
-  background-image: ${props => {
+  background-image: ${(props) => {
     if (props.playerTwoChoice === "spock") {
       return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/spock.jpg')";
     } else if (props.playerTwoChoice === "lizard") {
@@ -58,7 +58,7 @@ const RightHand = Hand.extend`
       return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/hands-sprite.png')";
     }
   }};
-  background-position: ${props => {
+  background-position: ${(props) => {
     if (props.playerTwoChoice === "scissor") {
       return "-624px 135px";
     } else if (props.playerTwoChoice === "paper") {
@@ -79,7 +79,7 @@ const rightBounce = keyframes`
   transition-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
   transform: translate3d(30px, -30px, 0) rotate(30deg);
 }
-  
+
 `;
 const leftBounce = keyframes`
 0%, 20%, 53%, 80%, 100% {
@@ -92,13 +92,17 @@ const leftBounce = keyframes`
   transform: translate3d(-30px, -30px, 0) rotate(-30deg);
 }`;
 
-const Hands = props => {
-  return (
-    <Fragment>
-      <LeftHand {...props}>{props.playerOneChoice}</LeftHand>
-      <RightHand {...props}>{props.playerTwoChoice}</RightHand>
-    </Fragment>
-  );
+type ApiPropsT = {
+  playerOneChoice: string;
+  playerTwoChoice: string;
 };
 
-export default Hands;
+export const Hands = (props: ApiPropsT) => {
+  const { playerOneChoice, playerTwoChoice } = props;
+  return (
+    <>
+      <LeftHand {...props}>{playerOneChoice}</LeftHand>
+      <RightHand {...props}>{playerTwoChoice}</RightHand>
+    </>
+  );
+};

@@ -1,7 +1,5 @@
-//@flow
 import React from "react";
-
-import Rules from "./Rules";
+import { Rules } from "./Rules";
 import styled from "styled-components";
 
 const Inputfield = styled.div`
@@ -78,28 +76,27 @@ const Button = styled.button`
 `;
 
 type PropsT = {
-  gameMode: string,
-  gameLength: number,
-  hideSettings: () => void,
-  setGameMode: string => void,
-  setGameLength: number => void
+  gameMode: string;
+  gameLength: string;
+  hideSettings: () => void;
+  setGameMode: (mode: "rpsls" | "rps") => void;
+  setGameLength: (length: string) => void;
 };
 
-const Settings = ({
+export const Settings = ({
   gameMode,
   gameLength,
   setGameMode,
   setGameLength,
-  hideSettings
+  hideSettings,
 }: PropsT) => {
-  const handleGameLengthChange = changeEvent => {
+  const handleGameLengthChange = (changeEvent: any) => {
     setGameLength(changeEvent.target.value);
   };
 
-  const handleGameModeChange = changeEvent => {
+  const handleGameModeChange = (changeEvent: any) => {
     setGameMode(changeEvent.target.value);
   };
-
   return (
     <div id="settings-pane" className="settings">
       <form method="POST" onSubmit={() => hideSettings()}>
@@ -185,4 +182,3 @@ const Settings = ({
     </div>
   );
 };
-export default Settings;

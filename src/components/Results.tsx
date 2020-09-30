@@ -1,7 +1,6 @@
-// @flow
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
-import { type ResultsT } from "../../types";
+import type { ResultsT } from "../types";
 
 const Title = styled.h2`
   position: absolute;
@@ -15,7 +14,7 @@ const Result = styled.li`
   color: #da727e;
 `;
 
-const Results = styled.ul`
+const ResultsList = styled.ul`
   margin: 0;
   padding: 0;
   width: 100%;
@@ -26,20 +25,18 @@ const Results = styled.ul`
   text-align: center;
 `;
 
-const Controls = ({ win, draw, lose }: ResultsT) => {
+export const Results = ({ win, draw, lose }: ResultsT) => {
   return (
-    <Fragment>
+    <>
       <Title>Results</Title>
-      <Results>
+      <ResultsList>
         <Result>Win: {`${win}`}</Result>
         <Result>
           Draw:
           {`${draw}`}
         </Result>
         <Result>Lose: {`${lose}`}</Result>
-      </Results>
-    </Fragment>
+      </ResultsList>
+    </>
   );
 };
-
-export default Controls;
