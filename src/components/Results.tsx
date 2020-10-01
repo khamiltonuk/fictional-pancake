@@ -25,7 +25,7 @@ const ResultsList = styled.ul`
   text-align: center;
 `;
 
-export const Results = ({ win, draw, lose }: ResultsT) => {
+const Results = ({ win, draw, lose }: ResultsT) => {
   return (
     <>
       <Title>Results</Title>
@@ -40,3 +40,5 @@ export const Results = ({ win, draw, lose }: ResultsT) => {
     </>
   );
 };
+
+export default Results;

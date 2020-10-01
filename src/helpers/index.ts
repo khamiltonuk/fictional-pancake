@@ -5,13 +5,13 @@ export const makeMove = (
   choice1: string,
   choice2: string,
   options: string[]
-) => {
+): ResultsT => {
   const index1 = options.indexOf(choice1);
   const index2 = options.indexOf(choice2);
   let dif = index2 - index1;
-  let draws = result.draw,
-    wins = result.win,
-    loses = result.lose;
+  let draws = result.draw;
+  let wins = result.win;
+  let loses = result.lose;
 
   if (dif < 0) {
     dif += options.length;
@@ -42,11 +42,11 @@ export function isGameOver(
   const winningScore = parseInt(gameLength, 10);
   if (win >= winningScore && winningScore !== 0) {
     return "You win";
-  } else if (lose >= winningScore && winningScore !== 0) {
-    return "You lose";
-  } else {
-    return "";
   }
+  if (lose >= winningScore && winningScore !== 0) {
+    return "You lose";
+  }
+  return "";
 }
 
 export function makeChoice(options: string[]): string {

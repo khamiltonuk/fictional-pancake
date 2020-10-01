@@ -9,7 +9,7 @@ describe("RESET_GAME", () => {
       isGameOver: "",
       playerOneChoice: "rock",
       playerTwoChoice: "rock",
-      result: { draw: 0, lose: 0, win: 0 }
+      result: { draw: 0, lose: 0, win: 0 },
     };
     expect(reducers(startState, startAction)).toEqual(expectedResult);
   });
@@ -53,7 +53,7 @@ describe("SET_GAME_MODE", () => {
     const startState = { gameMode: "rps" };
     const expectedResult = {
       gameMode: "rpsls",
-      moves: ["paper", "rock", "lizard", "spock", "scissors"]
+      moves: ["paper", "rock", "lizard", "spock", "scissors"],
     };
     expect(reducers(startState, startAction)).toEqual(expectedResult);
   });

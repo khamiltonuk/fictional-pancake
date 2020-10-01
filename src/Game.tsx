@@ -2,8 +2,7 @@ import React, { Dispatch } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 
-import { Results } from "./components/Results";
-import { Controls, Hands, Settings, GameStatus } from "./components";
+import { Controls, Hands, Settings, GameStatus, Results } from "./components";
 import {
   showSettings,
   resetGame,
@@ -11,11 +10,11 @@ import {
   setGameLength,
   makeMove,
   setGameMode,
+  ActionT,
 } from "./actions";
 import type { StateT } from "./reducers";
 
 import { makeChoice } from "./helpers";
-import { ActionT } from "./actions";
 
 const Title = styled.h1`
   text-align: center;
@@ -89,18 +88,19 @@ const Game = ({ store, dispatch }: ApiPropsT) => {
     gameMode,
     gameLength,
   } = store;
+  const { win, draw, lose } = result;
   return (
     <>
       <Title>Rock paper Scissors lizard spock</Title>
       <Frame>
-        <Results {...result} />
+        <Results win={win} draw={draw} lose={lose} />
         <Hands
           playerOneChoice={playerOneChoice}
           playerTwoChoice={playerTwoChoice}
         />
         <Button
           onClick={() => dispatch(makeMove(makeChoice(moves)))}
-          disabled={isGameOver === "" ? false : true}
+          disabled={isGameOver !== ""}
         >
           Ai Play
         </Button>

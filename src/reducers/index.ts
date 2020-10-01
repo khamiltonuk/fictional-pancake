@@ -26,7 +26,7 @@ export const initialState: StateT = {
 export type StateT = {
   result: ResultsT;
   isSettingsOpen: boolean;
-  gameMode: "rpsls" | "rps";
+  gameMode: string;
   moves: string[];
   gameLength: string;
   playerOneChoice: string;
@@ -34,9 +34,9 @@ export type StateT = {
   isGameOver: string;
 };
 
-export default function (state: StateT, action: ActionT): StateT {
+function reducer(state: StateT, action: ActionT): StateT {
   switch (action.type) {
-    case MAKE_MOVE:
+    case MAKE_MOVE: {
       const randomChoice = makeChoice(state.moves);
       const newResult = makeMove(
         state.result,
@@ -51,6 +51,7 @@ export default function (state: StateT, action: ActionT): StateT {
         result: newResult,
         isGameOver: isGameOver(newResult, state.gameLength),
       };
+    }
     case SET_GAME_MODE:
       return {
         ...state,
@@ -81,3 +82,5 @@ export default function (state: StateT, action: ActionT): StateT {
       return state;
   }
 }
+
+export default reducer;

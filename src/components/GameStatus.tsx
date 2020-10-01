@@ -16,10 +16,11 @@ type ApiPropsT = {
   isGameOver: string;
 };
 
-export const GameStatus = ({ isGameOver }: ApiPropsT) => {
+const GameStatus = ({ isGameOver }: ApiPropsT) => {
   if (isGameOver !== "") {
     return <StatusBar role="alert">{isGameOver}</StatusBar>;
-  } else {
-    return null;
   }
+  return null;
 };
+
+export default GameStatus;

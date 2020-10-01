@@ -1,6 +1,7 @@
 import React from "react";
-import { Rules } from "./Rules";
 import styled from "styled-components";
+
+import Rules from "./Rules";
 
 const Inputfield = styled.div`
   margin-top: 10px;
@@ -79,23 +80,23 @@ type PropsT = {
   gameMode: string;
   gameLength: string;
   hideSettings: () => void;
-  setGameMode: (mode: "rpsls" | "rps") => void;
+  setGameMode: (mode: string) => void;
   setGameLength: (length: string) => void;
 };
 
-export const Settings = ({
+const Settings = ({
   gameMode,
   gameLength,
   setGameMode,
   setGameLength,
   hideSettings,
 }: PropsT) => {
-  const handleGameLengthChange = (changeEvent: any) => {
-    setGameLength(changeEvent.target.value);
+  const handleGameLengthChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setGameLength(event.currentTarget.value);
   };
 
-  const handleGameModeChange = (changeEvent: any) => {
-    setGameMode(changeEvent.target.value);
+  const handleGameModeChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setGameMode(event.currentTarget.value);
   };
   return (
     <div id="settings-pane" className="settings">
@@ -182,3 +183,5 @@ export const Settings = ({
     </div>
   );
 };
+
+export default Settings;

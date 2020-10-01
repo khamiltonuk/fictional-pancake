@@ -6,16 +6,18 @@ const Title = styled.h2`
   font-weight: normal;
 `;
 
-export const Rules = () => {
+function Rules() {
   return (
     <>
       <Title>Rules</Title>
       <p>
-        "It's very simple. Scissors cuts paper, paper covers rock, rock crushes
-        lizard, lizard poisons Spock, Spock smashes scissors, scissors
-        decapitates lizard, lizard eats paper, paper disproves Spock, Spock
-        vaporizes rock, and as it always has rock crushes scissors"
+        &quot;It&apos;s very simple. Scissors cuts paper, paper covers rock,
+        rock crushes lizard, lizard poisons Spock, Spock smashes scissors,
+        scissors decapitates lizard, lizard eats paper, paper disproves Spock,
+        Spock vaporizes rock, and as it always has rock crushes scissors&quot;
       </p>
     </>
   );
-};
+}
+
+export default Rules;

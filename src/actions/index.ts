@@ -18,7 +18,7 @@ export type ActionT =  // Discriminated Unions
     }
   | {
       type: "SET_GAME_MODE";
-      payload: "rpsls" | "rps";
+      payload: string;
     }
   | {
       type: "MAKE_MOVE";
@@ -50,7 +50,7 @@ export const hideSettings = (): ActionT => {
   };
 };
 
-export const setGameMode = (payload: "rpsls" | "rps"): ActionT => {
+export const setGameMode = (payload: string): ActionT => {
   return {
     type: SET_GAME_MODE,
     payload,

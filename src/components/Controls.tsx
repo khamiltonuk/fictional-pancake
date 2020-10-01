@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 const Action = styled.nav`
@@ -42,7 +42,11 @@ type PropsT = {
   isGameOver: string;
 };
 
-export const Controls = ({ moves, makeMove, isGameOver }: PropsT) => {
+const Controls: React.FunctionComponent<PropsT> = ({
+  moves,
+  makeMove,
+  isGameOver,
+}: PropsT): ReactElement => {
   return (
     <Action>
       {moves.map((move) => (
@@ -50,7 +54,7 @@ export const Controls = ({ moves, makeMove, isGameOver }: PropsT) => {
           data-q={`make-move-${move}`}
           key={move}
           onClick={() => makeMove(move)}
-          disabled={isGameOver === "" ? false : true}
+          disabled={isGameOver !== ""}
         >
           {move}
         </Button>
@@ -58,3 +62,4 @@ export const Controls = ({ moves, makeMove, isGameOver }: PropsT) => {
     </Action>
   );
 };
+export default Controls;

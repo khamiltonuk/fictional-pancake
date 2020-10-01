@@ -17,58 +17,6 @@ const Hand = styled.span`
   transform-origin: center bottom;
 `;
 
-const LeftHand = styled(Hand)<ApiPropsT>`
-  left: 0;
-  top: 30%;
-  animation-name: ${({ playerTwoChoice }) => {
-    return playerTwoChoice === "animate" ? `${leftBounce}` : "none";
-  }};
-  background-image: ${({ playerOneChoice }) => {
-    if (playerOneChoice === "spock") {
-      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/spock.jpg')";
-    } else if (playerOneChoice === "lizard") {
-      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/lizard.jpg')";
-    } else {
-      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/hands-sprite.png')";
-    }
-  }};
-  background-position: ${({ playerOneChoice }) => {
-    if (playerOneChoice === "scissor") {
-      return "0 0";
-    } else if (playerOneChoice === "paper") {
-      return "0 -135px;";
-    } else {
-      return "-312px -135px;";
-    }
-  }};
-`;
-
-const RightHand = styled(Hand)<ApiPropsT>`
-  right: 0;
-  top: 50%;
-  animation-name: ${(props) => {
-    return props.playerTwoChoice === "animate" ? `${rightBounce}` : null;
-  }};
-  background-image: ${(props) => {
-    if (props.playerTwoChoice === "spock") {
-      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/spock.jpg')";
-    } else if (props.playerTwoChoice === "lizard") {
-      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/lizard.jpg')";
-    } else {
-      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/hands-sprite.png')";
-    }
-  }};
-  background-position: ${(props) => {
-    if (props.playerTwoChoice === "scissor") {
-      return "-624px 135px";
-    } else if (props.playerTwoChoice === "paper") {
-      return "-625px 0";
-    } else {
-      return "-312px 0;";
-    }
-  }};
-`;
-
 const rightBounce = keyframes`
 0%, 20%, 53%, 80%, 100% {
   transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -92,17 +40,76 @@ const leftBounce = keyframes`
   transform: translate3d(-30px, -30px, 0) rotate(-30deg);
 }`;
 
-type ApiPropsT = {
+const LeftHand = styled(Hand)<LeftHandPropsT>`
+  left: 0;
+  top: 30%;
+  animation-name: ${({ playerOneChoice }) => {
+    return playerOneChoice === "animate" ? `${leftBounce}` : "none";
+  }};
+  background-image: ${({ playerOneChoice }) => {
+    if (playerOneChoice === "spock") {
+      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/spock.jpg')";
+    }
+    if (playerOneChoice === "lizard") {
+      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/lizard.jpg')";
+    }
+    return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/hands-sprite.png')";
+  }};
+  background-position: ${({ playerOneChoice }) => {
+    if (playerOneChoice === "scissor") {
+      return "0 0";
+    }
+    if (playerOneChoice === "paper") {
+      return "0 -135px;";
+    }
+    return "-312px -135px;";
+  }};
+`;
+
+const RightHand = styled(Hand)<RightHandPropsT>`
+  right: 0;
+  top: 50%;
+  animation-name: ${({ playerTwoChoice }) => {
+    return playerTwoChoice === "animate" ? `${rightBounce}` : null;
+  }};
+  background-image: ${({ playerTwoChoice }) => {
+    if (playerTwoChoice === "spock") {
+      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/spock.jpg')";
+    }
+    if (playerTwoChoice === "lizard") {
+      return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/lizard.jpg')";
+    }
+    return "url('https://raw.githubusercontent.com/khamiltonuk/test-new/master/images/hands-sprite.png')";
+  }};
+  background-position: ${({ playerTwoChoice }) => {
+    if (playerTwoChoice === "scissor") {
+      return "-624px 135px";
+    }
+    if (playerTwoChoice === "paper") {
+      return "-625px 0";
+    }
+    return "-312px 0;";
+  }};
+`;
+
+type LeftHandPropsT = {
   playerOneChoice: string;
+};
+
+type RightHandPropsT = {
   playerTwoChoice: string;
 };
 
-export const Hands = (props: ApiPropsT) => {
+type ApiPropsT = LeftHandPropsT & RightHandPropsT;
+
+const Hands = (props: ApiPropsT) => {
   const { playerOneChoice, playerTwoChoice } = props;
   return (
     <>
-      <LeftHand {...props}>{playerOneChoice}</LeftHand>
-      <RightHand {...props}>{playerTwoChoice}</RightHand>
+      <LeftHand playerOneChoice={playerOneChoice}>{playerOneChoice}</LeftHand>
+      <RightHand playerTwoChoice={playerTwoChoice}>{playerTwoChoice}</RightHand>
     </>
   );
 };
+
+export default Hands;
