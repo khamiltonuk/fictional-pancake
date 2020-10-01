@@ -109,11 +109,7 @@ const Game = ({ store, dispatch }: ApiPropsT) => {
           {isGameOver === "" ? "reset" : "play again"}
         </Button>
         <GameStatus isGameOver={isGameOver} />
-        <Controls
-          makeMove={(move) => dispatch(makeMove(move))}
-          moves={moves}
-          isGameOver={isGameOver}
-        />
+        <Controls dispatch={dispatch} moves={moves} isGameOver={isGameOver} />
         <Modal
           isOpen={isSettingsOpen}
           onRequestClose={() => dispatch(hideSettings())}

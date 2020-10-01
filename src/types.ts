@@ -1,1 +1,1 @@
-export type ResultsT = { win: number, lose: number, draw: number };
+export type ResultsT = { win: number; lose: number; draw: number };

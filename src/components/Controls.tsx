@@ -1,5 +1,6 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, Dispatch } from "react";
 import styled from "styled-components";
+import { ActionT, makeMove, animateHands } from "../actions";
 
 const Action = styled.nav`
   position: absolute;
@@ -38,22 +39,28 @@ const Button = styled.button`
 
 type PropsT = {
   moves: string[];
-  makeMove: (move: string) => void;
+  dispatch: Dispatch<ActionT>;
   isGameOver: string;
 };
 
 const Controls: React.FunctionComponent<PropsT> = ({
   moves,
-  makeMove,
+  dispatch,
   isGameOver,
 }: PropsT): ReactElement => {
+  function handleMove(move: string) {
+    dispatch(animateHands());
+
+    setTimeout(() => dispatch(makeMove(move)), 1000);
+  }
+
   return (
     <Action>
       {moves.map((move) => (
         <Button
           data-q={`make-move-${move}`}
           key={move}
-          onClick={() => makeMove(move)}
+          onClick={() => handleMove(move)}
           disabled={isGameOver !== ""}
         >
           {move}

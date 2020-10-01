@@ -8,8 +8,6 @@ You can play it here [https://khamiltonuk.github.io/fictional-pancake/](https://
 [x] settings to reflect state
 [x] unlimited play
 [x] animate hands bouncing
-[] serve side rendering
-[] change title in helmet
 [] add translations into other languages
 
 ## Motivation
