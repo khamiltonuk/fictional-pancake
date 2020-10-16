@@ -44,7 +44,7 @@ const LeftHand = styled(Hand)<LeftHandPropsT>`
   left: 0;
   top: 30%;
   animation-name: ${({ playerOneChoice }) => {
-    return playerOneChoice === "animate" ? `${leftBounce}` : "none";
+    return playerOneChoice === "animate" ? leftBounce : "none";
   }};
   background-image: ${({ playerOneChoice }) => {
     if (playerOneChoice === "spock") {
@@ -70,7 +70,7 @@ const RightHand = styled(Hand)<RightHandPropsT>`
   right: 0;
   top: 50%;
   animation-name: ${({ playerTwoChoice }) => {
-    return playerTwoChoice === "animate" ? `${rightBounce}` : null;
+    return playerTwoChoice === "animate" ? rightBounce : null;
   }};
   background-image: ${({ playerTwoChoice }) => {
     if (playerTwoChoice === "spock") {

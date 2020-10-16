@@ -3,8 +3,14 @@ import styled from "styled-components";
 import type { ResultsT } from "../types";
 
 const Title = styled.h2`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
   position: absolute;
-  text-indent: -999em;
+  width: 1px;
 `;
 
 const Result = styled.li`
@@ -30,12 +36,12 @@ const Results = ({ win, draw, lose }: ResultsT) => {
     <>
       <Title>Results</Title>
       <ResultsList>
-        <Result>Win: {`${win}`}</Result>
+        <Result>Wins: {`${win}`}</Result>
         <Result>
-          Draw:
+          Draws:
           {`${draw}`}
         </Result>
-        <Result>Lose: {`${lose}`}</Result>
+        <Result>Loses: {`${lose}`}</Result>
       </ResultsList>
     </>
   );
